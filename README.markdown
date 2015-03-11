@@ -2,7 +2,7 @@
 ====================
 **A Swift implementation of the Fowler–Noll–Vo (FNV) hash function**
 
-This code provides platform independent implementations of the FNV-1 and FNV-1a hash functions in pure Swift. Computes 64-bit hashes on 64-bit devices and 32 bit hashes on 32 bit devices.
+This code provides platform independent implementations of the FNV-1 and FNV-1a hash functions in pure Swift. Computes 64-bit hashes on 64-bit devices and 32-bit hashes on 32-bit devices.
 
 How to use
 --------------------
@@ -29,7 +29,7 @@ let fnv1aHash = fnv1a(bytes)
 Additional information
 --------------------
 
-[Fowler–Noll–Vo hash function](http://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function)
+[Fowler–Noll–Vo hash function](http://www.isthe.com/chongo/tech/comp/fnv/)
 
 Contact
 --------------------

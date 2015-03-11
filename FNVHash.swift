@@ -1,28 +1,35 @@
 //
 //  FNVHash.swift
 //
-//  Created by Mauricio Santos on 3/9/15.
-//  Copyright (c) 2015 Mauricio Santos. All rights reserved.
+//  A Swift implementation of the Fowler–Noll–Vo (FNV) hash function
+//  See http://www.isthe.com/chongo/tech/comp/fnv/
 //
-
-// A Swift implementation of the Fowler–Noll–Vo FNV hash function
-// See http://www.isthe.com/chongo/tech/comp/fnv/
+//  Created by Mauricio Santos on 3/9/15.
 
 import Foundation
 
 // MARK:- Constants
 
 private struct Constants {
-    // Current plattform Int size in bytes
-    static let IntSize = sizeof(UInt)
     
     // FNV parameters
-    static let OffsetBasis: UInt = (IntSize == 4) ? 2166136261: 14695981039346656037
-    static let FNVPrime: UInt = (IntSize == 4) ? 16777619: 1099511628211
+    
+    #if arch(arm64) || arch(x86_64) // 64-bit
+    
+    static let OffsetBasis: UInt = 14695981039346656037
+    static let FNVPrime: UInt = 1099511628211
+    
+    #else // 32-bit
+    
+    static let OffsetBasis: UInt = 2166136261
+    static let FNVPrime: UInt = 16777619
+    
+    #endif
 }
 
 // MARK:- Public API
 
+/// Calculates FNV-1 hash from a raw byte array.
 public func fnv1(bytes: [UInt8]) -> UInt {
     var hash = Constants.OffsetBasis
     for byte in bytes {
@@ -32,6 +39,7 @@ public func fnv1(bytes: [UInt8]) -> UInt {
     return hash
 }
 
+/// Calculates FNV-1a hash from a raw byte array.
 public func fnv1a(bytes: [UInt8]) -> UInt {
     var hash = Constants.OffsetBasis
     for byte in bytes {
@@ -41,26 +49,32 @@ public func fnv1a(bytes: [UInt8]) -> UInt {
     return hash
 }
 
+/// Calculates FNV-1 hash from a String using it's UTF8 representation.
 public func fnv1(str: String) -> UInt {
     return fnv1(bytesFromString(str))
 }
 
+/// Calculates FNV-1a hash from a String using it's UTF8 representation.
 public func fnv1a(str: String) -> UInt {
     return fnv1a(bytesFromString(str))
 }
 
+/// Calculates FNV-1 hash from an integer type.
 public func fnv1<T: IntegerType>(value: T) -> UInt {
     return fnv1(bytesFromNumber(value))
 }
 
+/// Calculates FNV-1a hash from an integer type.
 public func fnv1a<T: IntegerType>(value: T) -> UInt {
     return fnv1a(bytesFromNumber(value))
 }
 
+/// Calculates FNV-1 hash from a floating point type.
 public func fnv1<T: FloatingPointType>(value: T) -> UInt {
     return fnv1(bytesFromNumber(value))
 }
 
+/// Calculates FNV-1a hash from a floating point type.
 public func fnv1a<T: FloatingPointType>(value: T) -> UInt {
     return fnv1a(bytesFromNumber(value))
 }
