@@ -24,7 +24,6 @@ let bytes: [UInt8] = [10, 20, 30]
 
 let fnv1Hash = fnv1(bytes)
 let fnv1aHash = fnv1a(bytes)
-});
 ```
  
 Additional information
