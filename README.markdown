@@ -1,4 +1,4 @@
-[Swift-FNV-Hash](github.com/mauriciosantos/Swift-FNV-Hash)
+[Swift-FNV-Hash](https://github.com/mauriciosantos/Swift-FNV-Hash)
 ====================
 **A Swift implementation of the Fowler–Noll–Vo (FNV) hash function**
 
