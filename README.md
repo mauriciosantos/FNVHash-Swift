@@ -4,7 +4,7 @@
 
 This code provides implementations of the FNV-1 and FNV-1a hash functions in pure Swift. Computes 64-bit hashes on 64-bit devices and 32-bit hashes on 32-bit devices.
 
-How to use
+Usage
 --------------------
 
 ```swift
